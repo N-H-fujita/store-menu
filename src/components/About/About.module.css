@@ -4,11 +4,10 @@
 
 .aboutHero {
   height: 300px;
-  background-image: url("img/about.jpg");
+  background-image: url("/img/about.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,6 +34,7 @@
   margin: 0;
   text-align: center;
   color: #fff;
+  font-size: 48px;
   letter-spacing: 0.2em;
 }
 
@@ -54,10 +54,71 @@
 }
 
 .readMore {
+  display: inline-block;
+  position: relative;
+  padding: 14px 36px;
   text-decoration: none;
+  color: #000;
+}
+
+/* span に position: relative は不要 */
+.readMore::before,
+.readMore::after,
+.readMore span::before,
+.readMore span::after {
+  content: "";
+  position: absolute;
+  background: #e03131;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* 左上：横線 */
+.readMore::before {
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 2px;
+}
+
+/* 左上：縦線 */
+.readMore::after {
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 20px;
+}
+
+/* 右下：横線 */
+.readMore span::before {
+  right: 0;
+  bottom: 0;
+  width: 20px;
+  height: 2px;
+}
+
+/* 右下：縦線 */
+.readMore span::after {
+  right: 0;
+  bottom: 0;
+  width: 2px;
+  height: 20px;
+}
+
+.readMore:hover::before,
+.readMore:hover span::before {
+  width: 100%;
+}
+
+.readMore:hover::after,
+.readMore:hover span::after {
+  height: 100%;
 }
 
 @media (max-width: 768px) {
+  .aboutHero {
+    background-attachment: scroll;
+  }
+
   .aboutText {
     grid-template-columns: 1fr;
   }

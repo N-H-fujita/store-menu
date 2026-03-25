@@ -8,7 +8,7 @@ export default function App() {
   return(
     <>
       <Header />
-      <main className="mainj">
+      <main className="main">
         <Menu />
         <About />
         <Location />
